@@ -14,7 +14,7 @@ import { Letter } from "@/components/invite/Letter";
 import { Schedule } from "@/components/invite/Schedule";
 import { Venue } from "@/components/invite/Venue";
 
-const title = "Sahana & Sandesh · शुभ विवाह";
+const title = "Srisha & Aashaya · शुभ विवाह";
 const description =
   "You are warmly invited to the wedding of Sahana Dhungel and Sandesh Paudel, 5 December 2026, Hetauda.";
 
