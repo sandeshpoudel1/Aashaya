@@ -16,7 +16,7 @@ import { Venue } from "@/components/invite/Venue";
 
 const title = "Srisha & Aashaya · शुभ विवाह";
 const description =
-  "You are warmly invited to the wedding of Sahana Dhungel and Sandesh Paudel, 5 December 2026, Hetauda.";
+  "You are warmly invited to the wedding of Srisha Poudel and Aashaya B.C., 25 November 2026, Lalitpur.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
             { property: "og:image", content: `${__SITE_URL__}/og.jpg` },
             { property: "og:image:width", content: "1200" },
             { property: "og:image:height", content: "630" },
-            { property: "og:image:alt", content: "Sahana & Sandesh wedding invitation" },
+            { property: "og:image:alt", content: "Srisha & Aashaya wedding invitation" },
             { property: "og:url", content: `${__SITE_URL__}/` },
             { name: "twitter:image", content: `${__SITE_URL__}/og.jpg` },
           ]
