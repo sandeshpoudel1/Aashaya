@@ -1,0 +1,642 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * Design system: warm ivory paper page, deep maroon ink, antique gold accents.
+ * Shape rule: buttons are full pills, paper cards use 6px corners.
+ * Motion rule: only transform, opacity and filter animate; every effect has a
+ * reduced-motion path at the bottom of this file.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-maroon: var(--maroon);
+  --color-maroon-deep: var(--maroon-deep);
+  --color-sindoor: var(--sindoor);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-ink: var(--gold-ink);
+  --color-ivory: var(--ivory);
+  --color-paper: var(--paper);
+  --color-blush: var(--blush);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-marigold: var(--marigold);
+
+  /* page tokens: flip with the theme. paper/ink/maroon above never flip. */
+  --color-page: var(--page);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-title: var(--title);
+  --color-hint: var(--hint);
+
+  /* Latin glyphs come from the first family, Devanagari glyphs fall through to the second. */
+  --font-display: "Cormorant Garamond", "Noto Serif Devanagari", Georgia, serif;
+  --font-script: "Pinyon Script", "Noto Serif Devanagari", cursive;
+  --font-sans: "Jost", "Mukta", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.375rem;
+
+  --ivory: #fbf4ec;
+  --paper: #fffaf3;
+  --blush: #f6e3dc;
+  --maroon: #5b1424;
+  --maroon-deep: #3e0d18;
+  --sindoor: #8e1b2c;
+  --ink: #3a1a1c;
+  --ink-muted: #6e5752;
+  --gold: #b8924a;
+  --gold-light: #e2c88f;
+  --gold-ink: #8a6524;
+  --marigold: #e39b2d;
+
+  --page: #fbf4ec;
+  --fg: #3a1a1c;
+  --fg-muted: #6e5752;
+  --title: #5b1424;
+  --hint: #8a6524;
+  --btn-bg: #5b1424;
+  --btn-fg: #fffaf3;
+  --btn-hover: #8e1b2c;
+  --page-glow: rgb(246 227 220 / 0.7);
+  --page-texture: url("./assets/invite/lokta-paper.webp");
+
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-ceremony: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-touch: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --shadow-paper:
+    0 1px 0 rgb(255 255 255 / 0.8) inset, 0 22px 44px -26px rgb(91 20 36 / 0.35),
+    0 6px 14px -8px rgb(91 20 36 / 0.18);
+
+  /* shadcn tokens, used by the toast and any ui/* component */
+  --background: var(--ivory);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--maroon);
+  --primary-foreground: var(--paper);
+  --secondary: var(--blush);
+  --secondary-foreground: var(--maroon);
+  --muted: var(--blush);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--blush);
+  --accent-foreground: var(--maroon);
+  --destructive: #b42318;
+  --destructive-foreground: var(--paper);
+  --border: rgb(184 146 74 / 0.4);
+  --input: rgb(138 101 36 / 0.35);
+  --ring: var(--maroon);
+}
+
+[data-theme="dark"] {
+  --page: #3b0a14;
+  --fg: #f6ead3;
+  --fg-muted: #d9c3a0;
+  --title: #e7cc8f;
+  --hint: #e7cc8f;
+  --btn-bg: #c9a24d;
+  --btn-fg: #24060e;
+  --btn-hover: #e7cc8f;
+  --page-glow: rgb(110 20 35 / 0.6);
+  --page-texture: url("./assets/invite/maroon-silk.webp");
+  --background: var(--page);
+  --foreground: var(--fg);
+  --muted-foreground: var(--fg-muted);
+  --accent: rgb(201 162 77 / 0.15);
+  --accent-foreground: var(--title);
+  --border: rgb(201 162 77 / 0.4);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--page);
+    background-image:
+      radial-gradient(120% 60% at 50% 0%, var(--page-glow), transparent 70%), var(--page-texture);
+    background-size:
+      auto,
+      512px 512px;
+    color: var(--fg);
+    transition:
+      background-color 500ms var(--ease-reveal),
+      color 500ms var(--ease-reveal);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  html.cover-open,
+  html.cover-open body {
+    overflow: hidden;
+  }
+  ::selection {
+    background: rgb(184 146 74 / 0.3);
+  }
+  :focus-visible {
+    outline: 2px solid var(--title);
+    outline-offset: 3px;
+  }
+}
+
+/* ---------- Type ---------- */
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--hint);
+  /* Devanagari breaks apart with tracking, keep it natural */
+  &:lang(ne) {
+    font-size: 0.95rem;
+    letter-spacing: 0;
+  }
+}
+@utility script-title {
+  font-family: var(--font-script);
+  font-size: clamp(2.6rem, 11vw, 3.6rem);
+  line-height: 1.25;
+  color: var(--title);
+  padding-bottom: 0.15em; /* script descenders */
+  &:lang(ne) {
+    font-family: "Noto Serif Devanagari", serif;
+    font-weight: 500;
+    font-size: clamp(1.75rem, 7vw, 2.3rem);
+    line-height: 1.5;
+  }
+}
+@utility serif-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  &:lang(ne) {
+    font-style: normal;
+  }
+}
+@utility text-gilt {
+  background: linear-gradient(115deg, #8a6524 0%, #c9a24d 40%, #8a6524 75%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Surfaces ---------- */
+
+@utility paper {
+  /* paper stays ivory in both looks, so page colors inside it are pinned to ink */
+  --fg: var(--ink);
+  --fg-muted: var(--ink-muted);
+  --title: var(--maroon);
+  --hint: var(--gold-ink);
+  background-color: var(--paper);
+  background-image: url("./assets/invite/lokta-paper.webp");
+  background-size: 512px 512px;
+  color: var(--ink);
+  border-radius: 6px;
+  border: 1px solid rgb(184 146 74 / 0.35);
+  box-shadow: var(--shadow-paper);
+}
+
+/* Ganesh art is light gold for dark grounds; deepen it on paper and on the light page */
+@utility on-paper {
+  filter: brightness(0.72) saturate(1.35);
+}
+@utility gold-art {
+  /* thin gold lines on a pale sky need more weight than on paper */
+  filter: brightness(0.55) saturate(1.6) contrast(1.25);
+  [data-theme="dark"] & {
+    filter: none;
+  }
+}
+
+/* ---------- Buttons: pills, press feedback, no looping motion ---------- */
+
+@utility btn-maroon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0 1.75rem;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: 0.95rem;
+  white-space: nowrap;
+  box-shadow: 0 10px 22px -12px rgb(36 6 14 / 0.6);
+  transition:
+    transform 160ms var(--ease-touch),
+    background-color 200ms var(--ease-touch);
+  &:hover {
+    background: var(--btn-hover);
+  }
+  &:active {
+    transform: scale(0.97);
+  }
+}
+@utility btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--title);
+  color: var(--title);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition:
+    transform 160ms var(--ease-touch),
+    background-color 200ms var(--ease-touch),
+    color 200ms var(--ease-touch);
+  &:hover {
+    background: var(--title);
+    color: var(--page);
+  }
+  &:active {
+    transform: scale(0.97);
+  }
+  &:lang(en) {
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+}
+
+/* ---------- Scroll reveal: opacity + rise + focus pull, run once ---------- */
+
+[data-reveal] > * {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(6px);
+  transition:
+    opacity 800ms var(--ease-reveal),
+    transform 1000ms var(--ease-reveal),
+    filter 800ms var(--ease-reveal);
+  transition-delay: calc(var(--i, 0) * 110ms);
+}
+[data-reveal].is-shown > * {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ---------- Opening: carved temple doors ---------- */
+
+.cover {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  perspective: 1800px;
+  background: #24060e;
+  transition:
+    background-color 600ms linear 900ms,
+    visibility 0s linear 1700ms;
+}
+.cover-door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.5%;
+  overflow: hidden;
+  background-color: #4f0e1c;
+  backface-visibility: hidden;
+  transition: transform 1500ms var(--ease-ceremony);
+  will-change: transform;
+}
+.cover-door--left {
+  left: 0;
+  transform-origin: left center;
+}
+.cover-door--right {
+  right: 0;
+  transform-origin: right center;
+}
+.cover-door-art {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  /* show the handle side so the two brass rings meet at the seam */
+  background-position: right center;
+}
+.cover-door--right .cover-door-art {
+  transform: scaleX(-1);
+}
+.cover-door::after {
+  /* shade toward the seam sells the depth while the doors swing */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 55%, rgb(0 0 0 / 0.45));
+  box-shadow: inset 0 0 70px rgb(0 0 0 / 0.5);
+}
+.cover-door--right::after {
+  background: linear-gradient(270deg, transparent 55%, rgb(0 0 0 / 0.45));
+}
+.cover-plaque {
+  transition:
+    opacity 360ms var(--ease-touch),
+    transform 500ms var(--ease-reveal),
+    filter 360ms var(--ease-touch);
+}
+.cover[data-state="opening"] {
+  background-color: transparent;
+  visibility: hidden;
+}
+.cover[data-state="opening"] .cover-plaque {
+  opacity: 0;
+  transform: scale(0.96);
+  filter: blur(4px);
+}
+.cover[data-state="opening"] .cover-door--left {
+  transform: rotateY(-108deg);
+}
+.cover[data-state="opening"] .cover-door--right {
+  transform: rotateY(108deg);
+}
+.cover-door,
+.cover-plaque {
+  visibility: visible;
+}
+
+/* ---------- Hero ---------- */
+
+.hero-art {
+  transform: scale(1.1);
+  transition: transform 2600ms var(--ease-reveal);
+}
+.is-open .hero-art {
+  transform: scale(1);
+}
+.hero-text > * {
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(8px);
+}
+.is-open .hero-text > * {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition:
+    opacity 1000ms var(--ease-reveal),
+    transform 1200ms var(--ease-reveal),
+    filter 1000ms var(--ease-reveal);
+  transition-delay: calc(700ms + var(--i, 0) * 170ms);
+}
+.name-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.3em);
+  filter: blur(10px);
+}
+.is-open .name-word {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition:
+    opacity 1100ms var(--ease-reveal),
+    transform 1300ms var(--ease-reveal),
+    filter 1100ms var(--ease-reveal);
+  transition-delay: calc(1000ms + var(--w, 0) * 180ms);
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-parallax {
+      animation: hero-drift linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100svh;
+    }
+  }
+}
+
+/* ---------- Scratch card ---------- */
+
+.scratch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  touch-action: none;
+  cursor: grab;
+  transition: opacity 700ms var(--ease-reveal);
+}
+.scratch-canvas[data-done="true"] {
+  opacity: 0;
+  pointer-events: none;
+}
+.date-row > * {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ---------- Petals ---------- */
+
+.petal-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  pointer-events: none;
+  animation: petal-fly var(--dur, 1600ms) var(--ease-reveal) var(--delay, 0ms) both;
+}
+.petal-rain-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20;
+  container-type: size;
+}
+.petal-rain {
+  position: absolute;
+  top: -6%;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  animation: petal-fall var(--dur, 7000ms) linear var(--delay, 0ms) infinite both;
+}
+
+/* ---------- Envelope ---------- */
+
+.envelope {
+  perspective: 1400px;
+}
+.envelope-flap {
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: transform 800ms var(--ease-ceremony) 180ms;
+}
+.envelope-face {
+  backface-visibility: hidden;
+}
+/* lining starts facing away; once the flap flips 180deg it faces the guest, pointing up */
+.envelope-face--back {
+  transform: rotateY(180deg);
+}
+/* positioned with Tailwind's `translate`, so animate the separate `scale` property */
+.envelope-seal {
+  transition:
+    scale 260ms var(--ease-touch),
+    opacity 260ms var(--ease-touch);
+}
+.envelope:hover .envelope-seal {
+  scale: 1.05;
+}
+.envelope[data-state="opening"] .envelope-seal {
+  scale: 0.85;
+  opacity: 0;
+}
+.envelope[data-state="opening"] .envelope-flap {
+  transform: rotateX(178deg);
+}
+.letter-card {
+  animation: letter-rise 1100ms var(--ease-reveal) both;
+}
+
+/* ---------- Timeline: the thread draws itself, markers pop on ---------- */
+
+.timeline-line {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1400ms var(--ease-reveal) 200ms;
+}
+.is-shown .timeline-line {
+  transform: scaleY(1);
+}
+.timeline-dot {
+  transform: rotate(45deg) scale(0);
+  transition: transform 500ms var(--ease-reveal);
+  transition-delay: calc(500ms + var(--i, 0) * 350ms);
+}
+.is-shown .timeline-dot {
+  transform: rotate(45deg) scale(1);
+}
+
+/* ---------- Countdown ---------- */
+
+.count-num {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes hero-drift {
+  to {
+    transform: translateY(12%);
+  }
+}
+@keyframes petal-fly {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg) scale(0.6);
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(1);
+  }
+}
+@keyframes petal-fall {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  10% {
+    opacity: 0.95;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift), 112cqh) rotate(var(--rot));
+  }
+}
+@keyframes letter-rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ---------- Reduced motion: everything lands instantly, nothing travels ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] > *,
+  .hero-text > *,
+  .name-word,
+  .date-row > * {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .timeline-line {
+    transform: none;
+  }
+  .timeline-dot {
+    transform: rotate(45deg);
+  }
+  .petal-burst,
+  .petal-rain {
+    display: none;
+  }
+}
