@@ -74,7 +74,7 @@ export const invitation = {
   // Shown as call buttons. Numbers are Nepal mobiles without the +977 prefix.
   contacts: [
     {
-      name: { ne: "सहना", en: "Srisha" },
+      name: { ne: "श्रीषा", en: "Srisha" },
       role: { ne: "दुलही", en: "Bride" },
       phones: ["9840405822", "9801140704"],
     },
@@ -153,7 +153,7 @@ export const invitation = {
     openLetter: { ne: "पत्र खोल्नुहोस्", en: "Open our letter" },
 
     familiesTitle: { ne: "हाम्रा परिवार", en: "Our families" },
-    familiesSign: { ne: "ढुंगेल परिवार", en: "The Poudel family" },
+    familiesSign: { ne: "पौडेल परिवार", en: "The Poudel family" },
     bride: { ne: "दुलही", en: "The Bride" },
     groom: { ne: "दुलाहा", en: "The Groom" },
 
