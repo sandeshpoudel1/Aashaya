@@ -13,18 +13,19 @@ export const invitation = {
 
   // This invitation is sent by the bride's family (Dhungel side).
   couple: {
-    groom: {
+    bride: {
       name: { ne: "आशय बि.सी.", en: "Aashaya B.C." },
       short: { ne: "आशय", en: "Aashaya" },
     }, 
-    bride: {
+    groom: {
       name: { ne: "श्रीषा पौडेल", en: "Srisha Poudel" },
       short: { ne: "श्रीषा", en: "Srisha" },
     },
+   
   },
 
   families: {
-    bride: {
+    groom: {
       relation: { ne: "की सुपुत्री", en: "Daughter of" },
       parents: {
         ne: "श्री दिपक कुमार पौडेल तथा श्रीमती सुभद्रा पौडेल",
@@ -32,30 +33,33 @@ export const invitation = {
       },
       home: { ne: "महालक्ष्मी-५, टिकाथली, ललितपुर", en: "Mahalaxmi-5, Tikathali, Lalitpur" },
     },
-    groom: {
+    bride: {
       relation: { ne: "का सुपुत्र", en: "Son of" },
       parents: {
         ne: "श्री टोप बहादुर बि.सी. तथा श्रीमती यक्ष बि.सी.",
         en: "Mr. Top Bahadur B.C. & Mrs. Yaksha B.C.",
       },
-      home: { ne: "गुर्जुधारा, चन्द्रागिरी", en: "Gurjudhara, Chandragiri" },
+      home: { ne: "गुर्जुधारा, चन्द्रागिरी-५", en: "Gurjudhara, Chandragiri-5" },
     },
   },
 
   wedding: {
     // ISO date-time with Nepal offset. 2083 Mangsir 19 BS = 5 December 2026 AD.
-    startsAt: "2026-11-25T11:00:00+05:45",
+    startsAt: "2026-11-27T11:00:00+05:45",
     // Used only for the calendar file until a real end time is known.
     calendarHours: 5,
-    bs: { day: 9, month: { ne: "मंसिर", en: "Mangsir" }, year: 2083 },
-    weekday: { ne: "बुधबार", en: "Wednesday" },
-    time: { ne: "बिहान १०:3० बजे", en: "10:30 AM" },
+    bs: { day: 11, month: { ne: "मंसिर", en: "Mangsir" }, year: 2083 },
+    weekday: { ne: "शुक्रबार", en: "Friday" },
+    time: { ne: "बिहान ८:०० बजे", en: "8:00 AM" },
     schedule: [
       {
-        time: { ne: "बिहान १०:३० बजे", en: "10:30 AM" },
+        time: { ne: "बिहान ८:०० बजे", en: "8:00 AM" },
         title: { ne: "शुभ विवाह", en: "Wedding ceremony" },
       },
-      { time: { ne: "बिहान ११:०० बजे", en: "11:00 AM" }, title: { ne: "प्रीतिभोज", en: "Lunch" } },
+      { 
+        time: { ne: "मंसिर १३, बेलुका ४:०० बजे मोर्डन पार्टी भेन्यु, थानकोट", en: "Mangsir 13, 4:00 PM, Modern Party Venue, Thankot" },
+        title: { ne: "प्रीतिभोज", en: "Lunch" } },
+      
     ],
   },
 
@@ -74,19 +78,19 @@ export const invitation = {
   // Shown as call buttons. Numbers are Nepal mobiles without the +977 prefix.
   contacts: [
     {
-      name: { ne: "श्रीषा", en: "Srisha" },
-      role: { ne: "दुलही", en: "Bride" },
-      phones: ["9840405822", "9801140704"],
+      name: { ne: "आशय", en: "Aashaya" },
+      role: { ne: "दुलाहा", en: "Groom" },
+      phones: ["9861523316", ],
     },
     {
-      name: { ne: "दिपक कुमार पौडेल", en: "Dipak Kumar Poudel" },
+      name: { ne: "टोप बहादुर बि. सी.", en: "Top Bahadur B.C." },
       role: { ne: "बुबा", en: "Father" },
-      phones: ["9851088258"],
+      phones: ["9851018883"],
     },
     {
-      name: { ne: "सुभद्रा पौडेल", en: "Subhadra Poudel" },
-      role: { ne: "आमा", en: "Mother" },
-      phones: ["9851034620"],
+      name: { ne: "आभाष बि. सी.", en: "Avash" },
+      role: { ne: "भाइ", en: "Brother" },
+      phones: ["9851402745"],
     },
   ],
 
@@ -98,8 +102,8 @@ export const invitation = {
     salutation: { ne: "आदरणीय आफन्तजन तथा शुभचिन्तकहरू,", en: "Dear family and friends," },
     paragraphs: [
       {
-        ne: "हाम्री सुपुत्री श्रीषाको शुभ विवाह श्री टोप बहादुर बि. सी. तथा श्रीमती यक्ष बि. सी. सुपुत्र आशय बि. सी.सँग हुन गइरहेको सुखद समाचार तपाईंसँग साझा गर्न पाउँदा हामी अत्यन्त हर्षित छौं।",
-        en: "With great joy, we share the news of the wedding of our daughter Srisha to Aashaya B.C., son of Mr. Top Bahadur B.C. and Mrs. Yaksha B.C.",
+        ne: "हाम्रा सुपुत्र आशयको शुभ विवाह श्री दीपक कुमार पौडेल तथा श्रीमती सुभद्रा पौडेलकी सुपुत्री श्रीषा पौडेलसँग हुन गइरहेको सुखद समाचार तपाईंसँग साझा गर्न पाउँदा हामी अत्यन्त हर्षित छौं।",
+        en: "With great joy, we share the news of the wedding of our son Aashaya to Srisha Poudel, daughter of Mr. Dipak Kumar Poudel and Mrs. Subhadra Poudel.",
       },
       {
         ne: "यस शुभ अवसरमा सपरिवार उपस्थित भई नवदम्पतीलाई आशीर्वाद दिनुहुन हार्दिक अनुरोध गर्दछौं।",
@@ -107,15 +111,15 @@ export const invitation = {
       },
     ],
     signoff: { ne: "निमन्त्रणाकर्ता", en: "With warm regards," },
-    signature: { ne: "दिपक कुमार पौडेल तथा सुभद्रा पौडेल", en: "Dipak Kumar Poudel & Subhadra Poudel" },
+    signature: { ne: "टोप बहादुर बि. सी. तथा श्रीमती यक्ष बि. सी.", en: "Top Bahadur B.C. & Yaksha B.C." },
   },
 
   copy: {
     title: { ne: "शुभ विवाह", en: "Wedding Invitation" },
     blessing: { ne: "॥ श्री गणेशाय नमः ॥", en: "With the blessings of Lord Ganesh" },
     together: {
-      ne: "पौडेल परिवारको हार्दिक निमन्त्रणा",
-      en: "The Poudel family invites you to the wedding of",
+      ne: "बि. सी. परिवारको हार्दिक निमन्त्रणा",
+      en: "The B.C. family invites you to the wedding of",
     },
     heroLine: {
       ne: "यस शुभ अवसरमा तपाईंको उपस्थिति र आशीर्वादको हार्दिक अपेक्षा गर्दछौं।",
@@ -153,9 +157,9 @@ export const invitation = {
     openLetter: { ne: "पत्र खोल्नुहोस्", en: "Open our letter" },
 
     familiesTitle: { ne: "हाम्रा परिवार", en: "Our families" },
-    familiesSign: { ne: "पौडेल परिवार", en: "The Poudel family" },
-    bride: { ne: "दुलही", en: "The Bride" },
-    groom: { ne: "दुलाहा", en: "The Groom" },
+    familiesSign: { ne: "बि. सी. परिवार", en: "The B.C. family" },
+    groom: { ne: "दुलही", en: "The Bride" },
+    bride: { ne: "दुलाहा", en: "The Groom" },
 
     ceremonyTitle: { ne: "विवाह स्थल", en: "Where we gather" },
     scheduleTitle: { ne: "शुभ दिनको कार्यक्रम", en: "The day, hour by hour" },
