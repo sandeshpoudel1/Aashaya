@@ -14,9 +14,9 @@ import { Letter } from "@/components/invite/Letter";
 import { Schedule } from "@/components/invite/Schedule";
 import { Venue } from "@/components/invite/Venue";
 
-const title = "Srisha & Aashaya · शुभ विवाह";
+const title = "Aashaya & Srisha · शुभ विवाह";
 const description =
-  "You are warmly invited to the wedding of Srisha Poudel and Aashaya B.C., 25 November 2026, Lalitpur.";
+  "You are warmly invited to the wedding of Aashaya B.C. and Srisha Poudel, 27 November 2026, Lalitpur.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
